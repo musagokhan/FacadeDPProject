@@ -1,0 +1,58 @@
+# Facade Tasarım Deseni Uygulaması
+
+Bu proje, basit bir araba üretim sistemi kullanarak **Facade Tasarım Deseni**ni göstermektedir. Facade deseni, bir alt sistemdeki bir dizi arayüze birleşik bir arayüz sağlayarak alt sistemi kullanımı daha kolay hale getirir.
+
+## Bu Projede Facade Deseninin Temel Faydaları
+- Araba yapılandırmalarını oluşturmak için arayüzü basitleştirir.
+- Facade içinde karmaşıklığı kapsayarak alt sistem detaylarına olan bağımlılığı azaltır.
+- Kod tabanını daha sürdürülebilir ve gelecekte genişletilebilir hale getirir.
+
+## Proje Yapısı
+
+### 1. **manager.MainWork**
+Uygulamanın giriş noktasıdır. Bu sınıf, `FacadeCarBuild` sınıfı ile etkileşime girerek arabalar hakkında detayları oluşturur ve gösterir.
+
+### 2. **facade.FacadeCarBuild**
+Araba tasarım alt sistemi ile etkileşimi basitleştiren facade sınıfıdır. Önceden tanımlı araba yapılandırmalarını oluşturmak için yöntemler sağlar:
+- `cheaperCar()`: Benzin motorlu bir hatchback araba oluşturur.
+- `expensiveCar()`: Dizel motorlu bir sedan araba oluşturur.
+
+### 3. **carDesing.BodyStyle**
+Bir arabanın gövde stilini temsil eder. Şu özellikleri içerir:
+- `type`: Gövde türü (ör. "sedan" veya "hatchback").
+- `color`: Gövde türüne göre belirlenen araba rengi.
+
+Ana yöntemler:
+- `paymentAmount()`: Gövde stilinin maliyetini bir `Optional<Double>` olarak döndürür.
+- `getColor()`: Araba gövdesinin rengini döndürür.
+
+### 4. **carDesing.EngineStyle**
+Bir arabanın motor stilini temsil eder. Şu özellikleri içerir:
+- `type`: Motor türü (ör. "gasoline" veya "diesel").
+- `volume`: Motor hacmi, motor türüne göre belirlenir.
+
+Ana yöntemler:
+- `paymentAmount()`: Motor stilinin maliyetini bir `Optional<Double>` olarak döndürür.
+- `getVolume()`: Motor hacmini döndürür.
+
+## UML Diyagramı
+Proje yapısı, ilişkileri ve facade sınıfının alt sistem sınıflarıyla nasıl etkileşime geçtiğini gösteren **PlantUML** diyagramında görselleştirilmiştir.
+
+## Nasıl Çalıştırılır
+1. Tüm sınıfları derleyin.
+2. `MainWork` sınıfını çalıştırın.
+3. Çıkış, daha ucuz ve daha pahalı araba tasarımlarının toplam maliyetini ve detaylarını gösterecektir.
+
+## Örnek Çıktı
+```
+Cheaper Car design is starting
+TotalPayment : 173.0
+Body: hatchback, Color: black, Engine: gasoline, Volume: 1.6
+
+Expensive Car design is starting
+TotalPayment : 192.2
+Body: sedan, Color: white, Engine: diesel, Volume: 1.3
+```
+
+
+
